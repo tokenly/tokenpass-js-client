@@ -9,11 +9,12 @@ var tokenapiModule = new TOKENPASS(config.tokenpass.key,config.tokenpass.secret,
 var app = express()
 app.use(logger('dev'))
 
+
 /*********** checkTokenAccess ********/
 app.get('/check_token_access', function (req, res) {		
 	var username = 'ratinder'
 	var rules = { TOKENLY: 1, LTBCOIN: 100000, stackop_1:'OR' }
-	var oauth_token = 'pYREjIvuuV1yiJp1Vmt2cTN5Pt1jmgCKAiev3PfG'
+	var oauth_token = 'UwtfjTkU1CFQHGYS6KMdqdhvoPIG9YEI89eyO1wV'
 	tokenapiModule.checkTokenAccess(username,rules,oauth_token).then(function(result){
 		console.log(result);
 		res.end(JSON.stringify(result))
@@ -26,8 +27,8 @@ app.get('/check_token_access', function (req, res) {
 /*********** getPublicAddresses ********/
 app.get('/get_public_addresses', function (req, res) {		
 	var username = 'ratinder'
-	var rules = { public: 1 }
-	var oauth_token = 'pYREjIvuuV1yiJp1Vmt2cTN5Pt1jmgCKAiev3PfG'
+	var rules = { public: 0}
+	var oauth_token = 'c8OtXdVIALo9Z0a3C8P5oiBLUxVV3w2wfFnR8EFC'
 	tokenapiModule.getPublicAddresses(username,rules,oauth_token).then(function(result){
 		console.log(result);
 		res.end(JSON.stringify(result))
@@ -41,8 +42,8 @@ app.get('/get_public_addresses', function (req, res) {
 /*********** registerAddress ********/
 app.get('/register_address', function (req, res) {		
 	var postData = {address:'Mohali Punjab', label:"Test My address", public: true, active:true }
-	var oauth_token = 'pYREjIvuuV1yiJp1Vmt2cTN5Pt1jmgCKAiev3PfG'
-	tokenapiModule.getPublicAddresses(postData,oauth_token).then(function(result){
+	var oauth_token = 'UwtfjTkU1CFQHGYS6KMdqdhvoPIG9YEI89eyO1wV'
+	tokenapiModule.registerAddress(postData,oauth_token).then(function(result){
 		console.log(result);
 		res.end(JSON.stringify(result))
 	},function(err){
