@@ -12,12 +12,14 @@
   },
   "license": "ISC",
   "dependencies": {
-    "request": "^2.76.0"
+    "request": "^2.78.0"
   },
   "devDependencies": {
     "should": "^11.1.1",
-    "mocha": "^3.0.0",
-	"sinon": "^1.17.5"
+    "mocha": "^3.1.2",
+	"sinon": "^1.17.6",
+	"chai": "^3.5.0",
+	"request": "^2.78.0"
   },
   "repository": {
     "type": "git",

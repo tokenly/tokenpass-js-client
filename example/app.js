@@ -111,36 +111,6 @@ app.get('/get_address_details_for_authenticated_user', function (req, res) {
 	})
 })
 
-/*********** verifyAddress ********/
-app.get('/verify_address', function (req, res) {	
-	var address = '1HB628hSqivpFCjmKKmBMEyBE3VWPRvqeZ'	
-	var data = {oauth_token:'otsU0YpM5bWN4Cj4lTcpC1ZBtRLMGSnhqAiqzt7m',scope:'tca,manage-address,private-address'}
-	tokenapiModule.getAddressDetailsForAuthenticatedUser(address,data).then(function(result){
-		var verify_code = result.result.verify_code
-		var verify_data = {message:verify_code}
-		tokenapiModule.verifyAddress(address,verify_data).then(function(result){
-			console.log(result.result.verify_code);
-			res.end(JSON.stringify(result))
-		},
-		function(err){
-			console.error(err);
-			res.end(JSON.stringify(err))
-		})
-	},function(err){
-		console.error(err);
-		res.end(JSON.stringify(err))
-	})
-	/*var address = '14eRVGNPQChSmSmNLH6RPjdwsNPc7rH2Z7'	
-	var data = {oauth_token:'otsU0YpM5bWN4Cj4lTcpC1ZBtRLMGSnhqAiqzt7m',scope:'tca,manage-address,private-address'}
-	tokenapiModule.verifyAddress(data,address).then(function(result){
-		console.log(result);
-		res.end(JSON.stringify(result))
-	},function(err){
-		console.error(err);
-		res.end(JSON.stringify(err))
-	})*/
-})
-
 
 /*********** updateAddressDetails ********/
 app.get('/update_address_details', function (req, res) {
